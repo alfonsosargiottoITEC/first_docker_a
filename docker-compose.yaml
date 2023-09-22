@@ -1,6 +1,6 @@
 version: '3' #Docker-compose version
 
-# sudo docker build --tag first_docker_b .
+# sudo docker build --tag first_docker_a_flask_app .
 services: # Lista de servicios
   flask_app: #servicio/app de flask
     build: # Lista de parámetros desde los cuales construir
@@ -8,21 +8,23 @@ services: # Lista de servicios
       dockerfile: Dockerfile #archivo de Dockerfile
 
 
-# sudo docker build --tag first_docker_b .
+# sudo docker build --tag first_docker_a_flask_app .
 # es reemplazado por docker-compose build
 
-# docker run -d -p 5005:5005 first_docker_b
+# docker run -d -p 5005:5005 first_docker_a_flask_app
 # es reemplazado por docker-compose up
     ports: #puerto contenedor:puerto host
       - "5005:5005"
     restart: always #en caso de error o falla
+    volumes:
+      - .:/first_docker_a # PathHost:PathContainer
 #  mysql_db:
 
 
 #BUILDEO DE CONTENEDOR
-# sudo docker build --tag first_docker_b .
+# sudo docker build --tag first_docker_a_flask_app .
 
 #CORRER EL CONTENDOR
-#- sudo docker run -d -p 5005:5005 first_docker_b mysql:5.7 -u root -pw root -p 3600 -e MYSQL_ROOT_PASSWORD=rootpassword -e 
+#- sudo docker run -d -p 5005:5005 first_docker_a_flask_app
 
 # Se reemplaza por docker-compose up y docker-compose up -d
